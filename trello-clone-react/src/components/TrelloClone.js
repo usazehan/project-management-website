@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProjectTaskItem from "./ProjectTask/ProjectTaskItem";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getBacklog } from '../actions/projectTaskActions'
 
 class TrelloClone extends Component {
+  componentDidMount() {
+    this.props.getBacklog();
+  }
   render() {
     return (
       <div className="container">
@@ -60,4 +66,12 @@ class TrelloClone extends Component {
   }
 }
 
-export default TrelloClone;
+TrelloClone.propTypes = {
+  getBacklog: PropTypes.func.isRequired,
+  project_tasks: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  project_tasks: state.project_tasks
+});
+export default connect(mapStateToProps, {getBacklog}) (TrelloClone);
