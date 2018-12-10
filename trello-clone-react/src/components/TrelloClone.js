@@ -37,9 +37,45 @@ class TrelloClone extends Component {
             doneItems.push(tasks[i]);
           }
         }
+        return (
+          <React.Fragment>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="card text-center mb-2">
+                    <div className="card-header bg-secondary text-white">
+                      <h3>TO DO</h3>
+                    </div>
+                  </div>
+                  
+                  {toDoItems}
+                </div>
+                <div className="col-md-4">
+                  <div className="card text-center mb-2">
+                    <div className="card-header bg-primary text-white">
+                      <h3>In Progress</h3>
+                    </div>
+                  </div>
+                  
+                  {inProgressItems}
+                </div>
+                <div className="col-md-4">
+                  <div className="card text-center mb-2">
+                    <div className="card-header bg-success text-white">
+                      <h3>Done</h3>
+                    </div>
+                  </div>
+                  
+                  {doneItems}
+                </div>
+              </div>
+            </div>
+        
+          </React.Fragment>
+        );
       }
     };
-    projectAlgorithm(project_tasks);
+    Content = projectAlgorithm(project_tasks);
     return (
       <div className="container">
         <Link to="/addProjectTask" className="btn btn-primary mb-3">
@@ -47,52 +83,7 @@ class TrelloClone extends Component {
         </Link>
         <br />
         <hr />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4">
-              <div className="card text-center mb-2">
-                <div className="card-header bg-secondary text-white">
-                  <h3>TO DO</h3>
-                </div>
-              </div>
-              {
-                // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-              }{" "}
-              
-              {
-                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
-              }{" "}
-              {toDoItems}
-            </div>
-            <div className="col-md-4">
-              <div className="card text-center mb-2">
-                <div className="card-header bg-primary text-white">
-                  <h3>In Progress</h3>
-                </div>
-              </div>
-              {
-                //     <!-- SAMPLE PROJECT TASK STARTS HERE -->
-                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
-              }
-              {inProgressItems}
-            </div>
-            <div className="col-md-4">
-              <div className="card text-center mb-2">
-                <div className="card-header bg-success text-white">
-                  <h3>Done</h3>
-                </div>
-              </div>
-              {
-                //     <!-- SAMPLE PROJECT TASK STARTS HERE -->
-                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
-              }
-            </div>
-          </div>
-        </div>
-        {
-          //<!-- Backlog ENDS HERE -->
-        }{" "}
-        {doneItems}
+        {Content}
       </div>
     );
   }
